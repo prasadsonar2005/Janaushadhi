@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI JanAushadhi+</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0a1628;--navy2:#0f2040;--teal:#00c9a7;--blue:#1a6fff;
+  --text:#e8edf5;--muted:#8a9bb5;--card:#14243d;--card2:#1c3050;
+  --border:rgba(0,201,167,0.15);--green:#22c55e;--amber:#f59e0b;--red:#ef4444;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(10,22,40,0.96);}
+.logo{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;display:flex;align-items:center;gap:10px;}
+.logo-mark{width:34px;height:34px;background:linear-gradient(135deg,var(--teal),var(--blue));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;font-weight:800;}
+nav ul{display:flex;gap:2rem;list-style:none;}
+nav a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s;}
+nav a:hover{color:var(--teal);}
+.nav-btn{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;border:none;padding:.5rem 1.25rem;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:5rem 3rem 4rem;max-width:1400px;margin:0 auto;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,201,167,0.1);border:1px solid var(--border);padding:.35rem .9rem;border-radius:100px;font-size:.8rem;color:var(--teal);margin-bottom:1.5rem;}
+.pulse{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+h1{font-family:'Syne',sans-serif;font-size:3.2rem;font-weight:800;line-height:1.1;margin-bottom:1.2rem;}
+h1 span{background:linear-gradient(135deg,var(--teal),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{color:var(--muted);font-size:1.05rem;line-height:1.7;max-width:480px;margin-bottom:2rem;}
+.hero-btns{display:flex;gap:1rem;}
+.btn-primary{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;border:none;padding:.8rem 1.8rem;border-radius:10px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 25px rgba(0,201,167,0.3);}
+.btn-outline{background:transparent;color:var(--teal);border:1px solid var(--teal);padding:.8rem 1.8rem;border-radius:10px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem;}
+.stat-card.accent{background:linear-gradient(135deg,rgba(0,201,167,0.1),rgba(26,111,255,0.08));border-color:var(--teal);}
+.val{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;margin-bottom:.2rem;}
+.lbl{color:var(--muted);font-size:.82rem;}
+.val.teal{color:var(--teal);}.val.blue{color:var(--blue);}.val.green{color:var(--green);}.val.amber{color:var(--amber);}
+
+/* FEATURES */
+.feature-strip{display:flex;gap:1rem;padding:0 3rem 3rem;max-width:1400px;margin:0 auto;}
+.feat{flex:1;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;align-items:flex-start;gap:12px;}
+.feat-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+.feat-icon.t{background:rgba(0,201,167,0.15);}.feat-icon.b{background:rgba(26,111,255,0.15);}.feat-icon.g{background:rgba(34,197,94,0.15);}.feat-icon.a{background:rgba(245,158,11,0.15);}
+.feat h4{font-size:.9rem;font-weight:600;margin-bottom:.2rem;}
+.feat p{font-size:.78rem;color:var(--muted);line-height:1.5;}
+
+/* SEARCH */
+.search-section{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem;}
+.search-inner{max-width:900px;margin:0 auto;}
+.search-inner h2{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.5rem;}
+.search-inner>p{color:var(--muted);margin-bottom:1.5rem;}
+.search-row{display:flex;gap:1rem;}
+.search-input{flex:1;background:var(--navy);border:1px solid var(--border);color:var(--text);padding:.9rem 1.2rem;border-radius:12px;font-size:1rem;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;}
+.search-input:focus{border-color:var(--teal);}
+.search-input::placeholder{color:var(--muted);}
+.search-btn{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;border:none;padding:.9rem 2rem;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:8px;white-space:nowrap;transition:opacity .2s;}
+.search-btn:disabled{opacity:.5;cursor:not-allowed;}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;}
+.chip{background:rgba(0,201,167,0.08);border:1px solid var(--border);padding:.3rem .8rem;border-radius:100px;font-size:.78rem;color:var(--muted);cursor:pointer;transition:all .2s;}
+.chip:hover{color:var(--teal);border-color:var(--teal);}
+
+/* RESULTS */
+#results{max-width:1400px;margin:0 auto;padding:3rem;}
+#results.hidden{display:none;}
+
+/* PROGRESS BAR */
+.progress-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;margin-bottom:2rem;display:none;}
+.progress-label{font-size:.9rem;color:var(--muted);margin-bottom:.75rem;display:flex;justify-content:space-between;}
+.progress-label span{color:var(--teal);font-weight:600;}
+.progress-bar-bg{background:var(--navy2);border-radius:100px;height:6px;overflow:hidden;}
+.progress-bar-fill{height:6px;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:100px;transition:width .4s ease;width:0%;}
+
+/* CARDS */
+.results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-bottom:2rem;}
+.res-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;}
+.res-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.75rem;display:flex;align-items:center;gap:8px;}
+.ricon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ricon.t{background:rgba(0,201,167,0.2);color:var(--teal);}
+.ricon.b{background:rgba(26,111,255,0.2);color:var(--blue);}
+.ricon.g{background:rgba(34,197,94,0.2);color:var(--green);}
+.ricon.a{background:rgba(245,158,11,0.2);color:var(--amber);}
+.loading-card{display:flex;align-items:center;justify-content:center;min-height:120px;gap:10px;color:var(--muted);font-size:.88rem;}
+.spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.tag{display:inline-block;padding:.2rem .55rem;border-radius:5px;font-size:.75rem;font-weight:600;margin:.15rem;}
+.tag.green{background:rgba(34,197,94,0.15);color:var(--green);}
+.tag.blue{background:rgba(26,111,255,0.15);color:var(--blue);}
+.tag.amber{background:rgba(245,158,11,0.15);color:var(--amber);}
+.tag.red{background:rgba(239,68,68,0.12);color:var(--red);}
+
+/* PRICE TABLE */
+.price-section{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;margin-bottom:2rem;}
+.price-section h2{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.badge{background:linear-gradient(135deg,var(--teal),var(--blue));padding:.25rem .75rem;border-radius:100px;font-size:.75rem;color:#fff;}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:.88rem;}
+th{background:var(--navy2);color:var(--muted);font-weight:500;text-align:left;padding:.8rem 1rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;}
+th:first-child{border-radius:10px 0 0 10px;}th:last-child{border-radius:0 10px 10px 0;}
+td{padding:.85rem 1rem;border-bottom:1px solid var(--border);vertical-align:middle;font-size:.86rem;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(0,201,167,0.03);}
+.savings-pill{background:rgba(34,197,94,0.15);color:var(--green);padding:.25rem .65rem;border-radius:6px;font-size:.8rem;font-weight:600;white-space:nowrap;}
+.best-pill{background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.4);color:var(--teal);padding:.2rem .6rem;border-radius:6px;font-size:.75rem;white-space:nowrap;}
+.brand-price{color:var(--muted);text-decoration:line-through;font-size:.82rem;}
+.jan-price{color:var(--green);font-weight:700;font-size:.95rem;}
+
+/* SAVING HIGHLIGHT */
+.saving-highlight{background:linear-gradient(135deg,rgba(0,201,167,0.08),rgba(26,111,255,0.08));border:1px solid rgba(0,201,167,0.3);border-radius:14px;padding:1.25rem 1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;}
+.sh-left{font-size:.88rem;color:var(--muted);}
+.sh-drug{margin-top:4px;font-size:.92rem;color:var(--text);font-weight:500;}
+.sh-amount{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--teal);}
+.sh-sub{font-size:.78rem;color:var(--muted);margin-top:.1rem;}
+
+/* DISCLAIMER */
+.disclaimer{background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.2);border-radius:10px;padding:.75rem 1.5rem;font-size:.8rem;color:var(--amber);margin:0 auto 1.5rem;max-width:1400px;padding-left:3rem;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer .fleft{color:var(--muted);font-size:.82rem;}
+footer .fleft b{color:var(--teal);}
+footer .fright{display:flex;gap:1.5rem;}
+footer a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:color .2s;}
+footer a:hover{color:var(--teal);}
+
+/* ERROR BOX */
+.err-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:1rem 1.25rem;color:var(--red);font-size:.85rem;margin-bottom:1rem;}
+
+@media(max-width:950px){
+  .hero{grid-template-columns:1fr;padding:3rem 1.5rem 2rem;}
+  .results-grid{grid-template-columns:1fr;}
+  nav ul{display:none;}
+  .search-row{flex-direction:column;}
+  nav,.search-section,footer{padding-left:1.5rem;padding-right:1.5rem;}
+  .feature-strip{flex-direction:column;padding:0 1.5rem 2rem;}
+  #results{padding:2rem 1.5rem;}
+  .disclaimer{padding-left:1.5rem;padding-right:1.5rem;}
+  .search-btn{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-mark">J+</div>
+    AI JanAushadhi<span style="color:var(--teal)">+</span>
+  </div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Search Medicine</a></li>
+    <li><a href="#">AI Insights</a></li>
+    <li><a href="#">Compare Prices</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.querySelector('.search-section').scrollIntoView({behavior:'smooth'})">Try Now →</button>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-badge"><div class="pulse"></div> Powered by OpenRouter AI — Any Drug, Any Disease</div>
+    <h1>Smart Medicine.<br><span>Affordable</span><br>Healthcare.</h1>
+    <p>Search any drug or disease. Get AI-powered insights on targets, repurposing, side effects, and real Jan Aushadhi generic price comparisons — instantly.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.querySelector('.search-section').scrollIntoView({behavior:'smooth'})">🔍 Search Medicine</button>
+      <button class="btn-outline">Learn More →</button>
+    </div>
+  </div>
+  <div>
+    <div class="stat-cards">
+      <div class="stat-card accent"><div class="val teal">9,000+</div><div class="lbl">Jan Aushadhi Generic Drugs</div></div>
+      <div class="stat-card"><div class="val green">75%</div><div class="lbl">Average Savings vs Branded</div></div>
+      <div class="stat-card"><div class="val blue">12,000+</div><div class="lbl">Jan Aushadhi Kendras Nationwide</div></div>
+      <div class="stat-card accent"><div class="val amber">∞</div><div class="lbl">Any Drug or Disease — AI Powered</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="feature-strip">
+  <div class="feat"><div class="feat-icon t">💊</div><div><h4>Jan Aushadhi Pricing</h4><p>AI-generated generic vs branded prices for any medicine</p></div></div>
+  <div class="feat"><div class="feat-icon b">🎯</div><div><h4>Drug Target Analysis</h4><p>Mechanism of action, receptors, enzymes, molecular targets</p></div></div>
+  <div class="feat"><div class="feat-icon g">🔄</div><div><h4>Drug Repurposing</h4><p>Off-label and repurposed uses discovered by AI</p></div></div>
+  <div class="feat"><div class="feat-icon a">⚠️</div><div><h4>Side Effects &amp; Safety</h4><p>Common adverse effects and contraindications</p></div></div>
+</div>
+
+<div class="search-section">
+  <div class="search-inner">
+    <h2>🔍 Search Any Drug or Disease</h2>
+    <p>Works for any medicine, generic name, branded name, or disease — fully AI powered, no hardcoding.</p>
+    <div class="search-row">
+      <input class="search-input" id="drugInput" type="text" placeholder="e.g. Diabetes, Paracetamol, Sildenafil, Tuberculosis, Aspirin, Cancer…"/>
+      <button class="search-btn" id="searchBtn" onclick="analyze()">
+        <span id="btnIcon">🚀</span><span id="btnText">Analyze</span>
+      </button>
+    </div>
+    <div class="chips">
+      <span class="chip" onclick="setQ('Paracetamol')">Paracetamol</span>
+      <span class="chip" onclick="setQ('Metformin')">Metformin</span>
+      <span class="chip" onclick="setQ('Diabetes')">Diabetes</span>
+      <span class="chip" onclick="setQ('Atorvastatin')">Atorvastatin</span>
+      <span class="chip" onclick="setQ('Hypertension')">Hypertension</span>
+      <span class="chip" onclick="setQ('Amoxicillin')">Amoxicillin</span>
+      <span class="chip" onclick="setQ('Omeprazole')">Omeprazole</span>
+      <span class="chip" onclick="setQ('Tuberculosis')">Tuberculosis</span>
+      <span class="chip" onclick="setQ('Ibuprofen')">Ibuprofen</span>
+      <span class="chip" onclick="setQ('Sildenafil')">Sildenafil</span>
+      <span class="chip" onclick="setQ('Aspirin')">Aspirin</span>
+      <span class="chip" onclick="setQ('Azithromycin')">Azithromycin</span>
+    </div>
+  </div>
+</div>
+
+<div id="results" class="hidden">
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-label"><span id="progressLabel">Calling AI…</span><span id="progressPct">0%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  </div>
+
+  <!-- ERROR -->
+  <div class="err-box" id="errBox" style="display:none;"></div>
+
+  <!-- AI INSIGHT CARDS -->
+  <div class="results-grid">
+    <div class="res-card" id="card1"><div class="loading-card"><div class="spinner"></div> Fetching drug profile…</div></div>
+    <div class="res-card" id="card2"><div class="loading-card"><div class="spinner"></div> Analyzing molecular target…</div></div>
+    <div class="res-card" id="card3"><div class="loading-card"><div class="spinner"></div> Finding repurposing data…</div></div>
+  </div>
+
+  <!-- SIDE EFFECTS + JAN AUSHADHI NOTE -->
+  <div class="results-grid" id="row2" style="display:none;">
+    <div class="res-card" id="card4"></div>
+    <div class="res-card" id="card5" style="grid-column:span 2;"></div>
+  </div>
+
+  <!-- PRICE TABLE -->
+  <div class="price-section">
+    <h2>💰 Jan Aushadhi Price Comparison <span class="badge">AI Generated</span></h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Drug / Dosage</th>
+            <th>Common Brand</th>
+            <th>Branded MRP (₹)</th>
+            <th>Jan Aushadhi Generic</th>
+            <th>Jan Aushadhi Price (₹)</th>
+            <th>Savings</th>
+            <th>% Saved</th>
+          </tr>
+        </thead>
+        <tbody id="priceTable">
+          <tr><td colspan="7"><div class="loading-card"><div class="spinner"></div> AI generating price data…</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="savingHighlight" style="display:none;" class="saving-highlight">
+      <div>
+        <div class="sh-left">💸 Maximum saving with Jan Aushadhi Scheme</div>
+        <div class="sh-drug" id="shDrug"></div>
+      </div>
+      <div style="text-align:right;">
+        <div class="sh-amount" id="shAmt">₹0</div>
+        <div class="sh-sub">per pack vs branded</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="disclaimer" id="disc" style="display:none;">
+  ⚠️ For educational and awareness purposes only. All prices are AI-estimated and indicative. Jan Aushadhi prices may vary by store and state. Consult a registered doctor or pharmacist before changing any medication.
+</div>
+
+<footer>
+  <div class="fleft">Inspired by <b>Govt. of India — Pradhan Mantri Jan Aushadhi Yojana</b> &nbsp;|&nbsp; AI by OpenRouter</div>
+  <div class="fright">
+    <a href="#">GitHub</a>
+    <a href="https://janaushadhi.gov.in" target="_blank">Jan Aushadhi Portal</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  CONFIG — paste your OpenRouter key here
+// ════════════════════════════════════════════════════════
+const API_KEY  = "OPEN_API_KEY";
+const MODEL    = "meta-llama/llama-3-8b-instruct";   // free tier
+// Other good free options:
+// "mistralai/mistral-7b-instruct"
+// "google/gemma-3-12b-it:free"
+// "deepseek/deepseek-chat"
+// ════════════════════════════════════════════════════════
+
+function setQ(v){ document.getElementById('drugInput').value=v; analyze(); }
+function esc(s){ return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function setProgress(pct, label){
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('progressPct').textContent  = pct+'%';
+  document.getElementById('progressLabel').textContent = label;
+}
+
+async function callAI(prompt){
+  const res = await fetch('https://openrouter.ai/api/v1/chat/completions',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${API_KEY}`,
+      'HTTP-Referer':'https://janaushadhi.app',
+      'X-Title':'AI JanAushadhi+'
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      max_tokens: 2000,
+      temperature: 0.3,
+      messages:[{role:'user', content: prompt}]
+    })
+  });
+  const data = await res.json();
+  if(data.error) throw new Error(data.error.message || 'OpenRouter error');
+  return data.choices[0].message.content;
+}
+
+function safeJSON(raw){
+  // Strip markdown fences and extract first JSON block
+  let clean = raw.replace(/```json/gi,'').replace(/```/g,'').trim();
+  const start = clean.indexOf('{');
+  const end   = clean.lastIndexOf('}');
+  if(start !== -1 && end !== -1) clean = clean.slice(start, end+1);
+  return JSON.parse(clean);
+}
+
+async function analyze(){
+  const input = document.getElementById('drugInput').value.trim();
+  if(!input) return;
+
+  // UI reset
+  const btn = document.getElementById('searchBtn');
+  btn.disabled = true;
+  document.getElementById('btnText').textContent = 'Analyzing…';
+  document.getElementById('btnIcon').textContent = '⏳';
+  document.getElementById('results').classList.remove('hidden');
+  document.getElementById('disc').style.display = 'block';
+  document.getElementById('errBox').style.display = 'none';
+  document.getElementById('savingHighlight').style.display = 'none';
+  document.getElementById('row2').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'block';
+
+  ['card1','card2','card3'].forEach((id,i)=>{
+    const labels=['Fetching drug profile…','Analyzing molecular target…','Finding repurposing data…'];
+    document.getElementById(id).innerHTML=`<div class="loading-card"><div class="spinner"></div>${labels[i]}</div>`;
+  });
+  document.getElementById('priceTable').innerHTML=
+    '<tr><td colspan="7"><div class="loading-card"><div class="spinner"></div> AI generating price data…</div></td></tr>';
+
+  setProgress(10, 'Preparing AI prompt…');
+
+  // ── PROMPT 1: Drug / Disease Profile ──────────────────────────────────────
+  const prompt1 = `You are a clinical pharmacology AI for the Indian Jan Aushadhi generic medicine awareness app.
+The user searched for: "${input}"
+
+If the input is a DISEASE (e.g. Diabetes, Hypertension, Tuberculosis, Cancer):
+- Identify the first-line and second-line drugs used to treat that disease in India.
+- Fill in drug_name as the primary first-line drug.
+
+Return ONLY a valid JSON object. No markdown, no backticks, no explanation. Exactly this schema:
+{
+  "query_type": "drug" or "disease",
+  "disease_name": "if query is a disease, its name. else empty string",
+  "drug_name": "primary drug name (INN/generic)",
+  "drug_class": "pharmacological class, 5-7 words",
+  "generic_name": "INN generic name",
+  "uses": "3 sentences on what this drug treats clinically",
+  "mechanism": "3 sentences on mechanism of action — mention specific receptors, enzymes, ion channels, or transporters targeted",
+  "repurposing": "3 sentences on known off-label or repurposed clinical uses backed by evidence",
+  "side_effects": ["side effect 1","side effect 2","side effect 3","side effect 4","side effect 5"],
+  "contraindications": ["contraindication 1","contraindication 2","contraindication 3"],
+  "jan_aushadhi_note": "2 sentences on availability in Jan Aushadhi Kendras and the cost benefit for Indian patients",
+  "alternative_drugs": ["alternative drug 1","alternative drug 2","alternative drug 3"]
+}`;
+
+  let info = null;
+  try{
+    setProgress(25, 'Fetching drug profile from AI…');
+    const raw1 = await callAI(prompt1);
+    info = safeJSON(raw1);
+    renderInsights(info, input);
+    setProgress(60, 'Drug profile loaded. Generating price data…');
+  }catch(e){
+    console.error('Profile error:', e);
+    showError('AI drug profile failed: ' + e.message);
+    document.getElementById('card1').innerHTML=`<h3><span class="ricon t">💊</span>${esc(input)}</h3><p style="color:var(--red);font-size:.85rem;">Failed: ${esc(e.message)}</p>`;
+    document.getElementById('card2').innerHTML=`<h3><span class="ricon b">🎯</span>Target</h3><p style="color:var(--muted);font-size:.85rem;">Could not load.</p>`;
+    document.getElementById('card3').innerHTML=`<h3><span class="ricon g">🔄</span>Repurposing</h3><p style="color:var(--muted);font-size:.85rem;">Could not load.</p>`;
+  }
+
+  // ── PROMPT 2: Price Comparison ─────────────────────────────────────────────
+  const drugForPrice = info?.drug_name || input;
+  const altDrugs     = info?.alternative_drugs?.join(', ') || '';
+
+  const prompt2 = `You are a pharmaceutical pricing expert for India's Jan Aushadhi generic medicine scheme.
+
+Primary drug: "${drugForPrice}"
+${altDrugs ? `Related drugs to also include in table: ${altDrugs}` : ''}
+
+Generate a realistic price comparison table for India with 4-6 rows covering different dosages and related drugs.
+Use REAL approximate Indian market prices. Jan Aushadhi prices are typically 50-90% cheaper than branded MRP.
+
+Return ONLY a valid JSON array. No markdown, no backticks, no explanation. Example structure:
+[
+  {
+    "drug": "Drug Name Dose",
+    "brand_name": "Common Brand Name",
+    "brand_price": 120,
+    "generic_name": "Generic IP Name",
+    "jan_price": 15,
+    "unit": "Strip of 10 tablets"
+  }
+]
+
+Rules:
+- brand_price and jan_price must be realistic integers in Indian Rupees
+- jan_price must always be less than brand_price
+- Include actual well-known brand names sold in India
+- Cover the primary drug in 2-3 dosages, plus 1-2 alternative/related drugs
+- unit should describe pack size accurately`;
+
+  try{
+    setProgress(75, 'Generating Jan Aushadhi price comparison…');
+    const raw2 = await callAI(prompt2);
+    let clean2 = raw2.replace(/```json/gi,'').replace(/```/g,'').trim();
+    const s = clean2.indexOf('['), e2 = clean2.lastIndexOf(']');
+    if(s!==-1 && e2!==-1) clean2 = clean2.slice(s, e2+1);
+    const prices = JSON.parse(clean2);
+    renderPriceTable(prices);
+    setProgress(100, 'Done!');
+  }catch(e){
+    console.error('Price error:', e);
+    document.getElementById('priceTable').innerHTML=
+      `<tr><td colspan="7" style="color:var(--red);padding:1rem;font-size:.85rem;">Price data failed: ${esc(e.message)}</td></tr>`;
+  }
+
+  setTimeout(()=>{ document.getElementById('progressWrap').style.display='none'; }, 800);
+
+  btn.disabled = false;
+  document.getElementById('btnText').textContent = 'Analyze';
+  document.getElementById('btnIcon').textContent = '🚀';
+}
+
+function showError(msg){
+  const b = document.getElementById('errBox');
+  b.style.display = 'block';
+  b.textContent = '⚠️ ' + msg;
+}
+
+function renderInsights(info, input){
+  // Card 1 — Drug Profile
+  const alts = (info.alternative_drugs||[]).map(d=>`<span class="tag blue">${esc(d)}</span>`).join('');
+  document.getElementById('card1').innerHTML=`
+    <h3><span class="ricon t">💊</span>${esc(info.drug_name || input)}</h3>
+    <div style="font-size:.76rem;color:var(--teal);font-weight:600;margin-bottom:.3rem;">${esc(info.drug_class||'')}</div>
+    <div style="font-size:.8rem;color:var(--muted);margin-bottom:.75rem;font-style:italic;">Generic: ${esc(info.generic_name||'')}</div>
+    ${info.disease_name?`<div style="font-size:.78rem;margin-bottom:.5rem;"><span class="tag amber">Disease: ${esc(info.disease_name)}</span></div>`:''}
+    <p style="font-size:.86rem;line-height:1.75;color:var(--text);">${esc(info.uses||'')}</p>
+    ${alts?`<div style="margin-top:.75rem;font-size:.78rem;color:var(--muted);">Alternatives: ${alts}</div>`:''}
+    <div style="margin-top:.85rem;background:rgba(0,201,167,0.07);border:1px solid var(--border);border-radius:8px;padding:.6rem .85rem;font-size:.8rem;color:var(--teal);">${esc(info.jan_aushadhi_note||'')}</div>
+  `;
+
+  // Card 2 — Molecular Target
+  document.getElementById('card2').innerHTML=`
+    <h3><span class="ricon b">🎯</span>Molecular Target</h3>
+    <p style="font-size:.86rem;line-height:1.75;color:var(--text);">${esc(info.mechanism||'Not available')}</p>
+  `;
+
+  // Card 3 — Repurposing
+  document.getElementById('card3').innerHTML=`
+    <h3><span class="ricon g">🔄</span>Drug Repurposing</h3>
+    <p style="font-size:.86rem;line-height:1.75;color:var(--text);">${esc(info.repurposing||'Not available')}</p>
+  `;
+
+  // Row 2 — Side Effects + Contraindications
+  const seTags = (info.side_effects||[]).map(s=>`<span class="tag amber">${esc(s)}</span>`).join(' ');
+  const ciTags = (info.contraindications||[]).map(c=>`<span class="tag red">${esc(c)}</span>`).join(' ');
+
+  document.getElementById('card4').innerHTML=`
+    <h3><span class="ricon a">⚠️</span>Side Effects</h3>
+    <div style="line-height:2;">${seTags||'<span style="color:var(--muted);font-size:.85rem;">Not available</span>'}</div>
+  `;
+
+  document.getElementById('card5').innerHTML=`
+    <h3><span class="ricon a">🚫</span>Contraindications</h3>
+    <div style="line-height:2;">${ciTags||'<span style="color:var(--muted);font-size:.85rem;">Not available</span>'}</div>
+  `;
+
+  document.getElementById('row2').style.display='grid';
+}
+
+function renderPriceTable(rows){
+  if(!Array.isArray(rows)||rows.length===0){
+    document.getElementById('priceTable').innerHTML='<tr><td colspan="7" style="color:var(--muted);padding:1rem;font-size:.85rem;">No price data returned.</td></tr>';
+    return;
+  }
+
+  let bestSaving=0, bestDrug='', html='';
+
+  rows.forEach((r,i)=>{
+    const bp  = parseInt(r.brand_price)||0;
+    const jp  = parseInt(r.jan_price)||0;
+    const sav = bp - jp;
+    const pct = bp>0 ? Math.round((sav/bp)*100) : 0;
+    if(sav > bestSaving){ bestSaving=sav; bestDrug=r.drug||''; }
+
+    html+=`<tr>
+      <td>
+        <strong style="font-size:.88rem;">${esc(r.drug||'')}</strong>
+        <div style="font-size:.74rem;color:var(--muted);margin-top:2px;">${esc(r.unit||'')}</div>
+      </td>
+      <td style="color:var(--muted);">${esc(r.brand_name||'')}</td>
+      <td><span class="brand-price">₹${bp}</span></td>
+      <td>${esc(r.generic_name||'')}</td>
+      <td><span class="jan-price">₹${jp}</span></td>
+      <td><span class="savings-pill">Save ₹${sav}</span></td>
+      <td>
+        ${pct>0?`<span class="savings-pill">${pct}%</span>`:'—'}
+        ${i===0?'<br><span class="best-pill" style="margin-top:3px;display:inline-block;">Best Value</span>':''}
+      </td>
+    </tr>`;
+  });
+
+  document.getElementById('priceTable').innerHTML = html;
+
+  if(bestSaving>0){
+    document.getElementById('savingHighlight').style.display='flex';
+    document.getElementById('shAmt').textContent  = '₹'+bestSaving;
+    document.getElementById('shDrug').textContent = bestDrug + ' — Switch to Jan Aushadhi Generic';
+  }
+}
+
+document.getElementById('drugInput').addEventListener('keydown', e=>{ if(e.key==='Enter') analyze(); });
+</script>
+</body>
+</html>
